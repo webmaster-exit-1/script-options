@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+echo "        # Dolphin Services Plasmoid
+
+# Modified by: frank98rh
+# Release: 2022
+# License: GPL-3.0
+# Version: 1.0
+
+# Translated by: WebMaster Exit 1
+# Release: 2022
+# License: GPL-3.0
+# Version: 1.0
+
+Script will be installed next
+
+        Credits
+https://www.pling.com/p/1127687/
+" | zenity --text-info --title "Installer" --width 380 --height 320
+
+ret=$?
+
+echo $ret
+
+[[ $ret -eq 1 ]] && exit
+
+if [[ $ret -eq 0 ]];
+then
+cp script.desktop "$HOME"/.local/share/kservices5/ServiceMenus/
+
+kdialog --title "*** * Installation complete! * ***" --passivepopup "Enjoy! :)";
+    exit
+fi

@@ -1,0 +1,34 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/x-shellscript;application/x-ruby;text/x-python;application/x-executable
+Icon=folder-script
+X-KDE-Priority=TopLevel
+X-KDE-StartupNotify=false
+X-KDE-Submenu=Script
+X-KDE-Submenu[en]=Script
+Actions=me;cp;ex;ex-root;
+
+[Desktop Action me]
+Name=Make executable
+Name[en]=make executable
+Icon=system-run
+Exec=chmod +x "%f"; kdialog --title "Permission set to the Script" --passivepopup "$(basename %f) is now executable";
+
+[Desktop Action cp]
+Name=Copy to /usr/bin
+Name[en]=Copy to /usr/bin
+Icon=password-copy
+Exec=pkexec cp %f /usr/bin/; kdialog --title "Copied script if you enter your password" --passivepopup "$(basename %f) You can check in /usr/bin/";
+
+[Desktop Action ex]
+Name=Run
+Name[en]=Run
+Icon=run-install
+Exec=konsole --hold -e "%f"; kdialog --title "script executed" --passivepopup "$(basename %f) Executed";
+
+[Desktop Action ex-root]
+Name=Run as root
+Name[en]=run as root
+Icon=run-install
+Exec=konsole --hold -e sudo "%f"; kdialog --title "Script executed" --passivepopup "$(basename %f)Run as superuser";

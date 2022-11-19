@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Do You Want To Uninstall This Service From Your PC?" | zenity --text-info --title "Uninstaller" --width 320 --height 150
+
+ret=$?
+
+echo $ret
+
+[[ $ret -eq 1 ]] && exit
+
+if [[ $ret -eq 0 ]]; then
+cd "$HOME"/.local/share/kservices5/ServiceMenus/ || exit
+rm -R script.desktop
+
+kdialog --title "Uninstall Complete" --passivepopup "Later";
+    exit
+fi
